@@ -1,4 +1,4 @@
-name: Build or destory infrastructure
+name: Build or destroy infrastructure
 
 on:
   workflow_dispatch:
@@ -53,5 +53,5 @@ jobs:
 
             - name: Terraform Apply
               id: apply
-              run: terraform apply
+              run: terraform apply -auto-approve
               continue-on-error: false
