@@ -53,5 +53,5 @@ jobs:
 
             - name: Terraform Apply
               id: apply
-              run: terraform apply-all
+              run: terraform apply
               continue-on-error: false
