@@ -1,15 +1,6 @@
 provider "aws" {
     region = "ap-southeast-2"
-
-    assume_role {
-        role_arn = "arn:aws:iam::901279261574:role/GitHubAction-AssumeRoleWithAction"
-        session_name = "tf-aws-mgrassi-cloud-resume-challenge"
-        external_id = "mgrassi12@github"
-    }
-
-    #default_tags{
-    #    tags = <add here>
-    #}
+    #TODO: add default tags here
 }
 
 terraform {
@@ -28,7 +19,6 @@ terraform {
       region = "ap-southeast-2"
       encrypt = true
       #dynamodb_table = "terraform-locks"
-      #role_arn = "arn:aws:iam::901279261574:role/GitHubAction-AssumeRoleWithAction"
     }
 }
     
