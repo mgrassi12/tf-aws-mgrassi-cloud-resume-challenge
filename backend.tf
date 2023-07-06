@@ -1,6 +1,5 @@
 provider "aws" {
     region = "ap-southeast-2"
-    #TODO: add default tags here
 }
 
 terraform {
@@ -14,12 +13,9 @@ terraform {
     }
 
     backend "s3" {
-      bucket = "tf-aws-mgrassi-cloud-resume-challenge-state-bucket"
+      bucket = "tf-aws-mgrassi-cloud-resume-challenge.state"
       key = "terraform.tfstate"
       region = "ap-southeast-2"
       encrypt = true
-      #dynamodb_table = "terraform-locks"
     }
 }
-    
-    

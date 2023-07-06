@@ -20,9 +20,6 @@ jobs:
         runs-on: ubuntu-latest
         if: inputs.action_type == 'build'
         
-        #run:
-        #  working-directory: "."
-
         steps:
             - name: configure aws credentials
               uses: aws-actions/configure-aws-credentials@master
