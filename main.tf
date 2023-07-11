@@ -65,7 +65,7 @@ resource "aws_s3_bucket_ownership_controls" "cloud_resume_logging_bucket" {
   bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
 
   rule {
-    object_ownership = "ObjectWriter"
+    object_ownership = "BucketOwnerPreferred"
   }
 }
 
