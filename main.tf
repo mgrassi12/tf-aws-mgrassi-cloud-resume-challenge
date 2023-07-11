@@ -2,10 +2,6 @@
 #tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "cloud_resume_site_bucket" {
   bucket = "tf-aws-mgrassi-cloud-resume-challenge-site"
-
-  logging {
-    target_bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
-  }
 }
 
 
@@ -59,6 +55,18 @@ resource "aws_s3_bucket_public_access_block" "cloud_resume_logging_bucket" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_acl" "cloud_resume_logging_bucket" {
+  bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
+  acl    = "log-delivery-write"
+}
+
+resource "aws_s3_bucket_logging" "cloud_resume_logging_bucket" {
+  bucket = aws_s3_bucket.cloud_resume_site_bucket.id
+
+  target_bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
+  target_prefix = "log/"
 }
 
 #TODO: prevent billshock in AWS
