@@ -6,14 +6,17 @@ resource "aws_s3_bucket" "cloud_resume_site_bucket" {
   logging {
     target_bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
   }
+}
 
-  server_side_encryption_configuration {
-    rule {
-      bucket_key_enabled = true
 
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+resource "aws_s3_bucket_server_side_encryption_configuration" "cloud_resume_site_bucket" {
+  bucket = aws_s3_bucket.cloud_resume_site_bucket.id
+
+  rule {
+    bucket_key_enabled = true
+    
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
 }
@@ -35,14 +38,16 @@ resource "aws_s3_bucket" "cloud_resume_logging_bucket" {
   versioning {
     enabled = true
   }
+}
 
-  server_side_encryption_configuration {
-    rule {
-      bucket_key_enabled = true
+resource "aws_s3_bucket_server_side_encryption_configuration" "cloud_resume_logging_bucket" {
+  bucket = aws_s3_bucket.cloud_resume_logging_bucket.id
 
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+  rule {
+    bucket_key_enabled = true
+
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
 }
@@ -58,5 +63,4 @@ resource "aws_s3_bucket_public_access_block" "cloud_resume_logging_bucket" {
 
 #TODO: prevent billshock in AWS
 #TODO: introduce best practice tf project structure
-#TODO: add state lock dynamodb
 #TODO: add default tags
