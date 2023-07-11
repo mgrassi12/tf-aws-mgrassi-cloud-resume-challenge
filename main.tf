@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "b" {
   bucket = "tf-aws-mgrassi-cloud-resume-challenge"
-  acl    = "private"
+  acl    = "public"
 }
 
 #TODO: prevent billshock in AWS
