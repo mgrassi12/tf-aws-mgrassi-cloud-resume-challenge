@@ -13,7 +13,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "tf-aws-mgrassi-cloud-resume-challenge-prod.state"
+    bucket  = "tf-aws-mgrassi-cloud-resume-challenge.state"
     key     = "terraform.tfstate"
     region  = "ap-southeast-2"
     encrypt = true
