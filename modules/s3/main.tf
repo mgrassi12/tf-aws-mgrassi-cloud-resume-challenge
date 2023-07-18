@@ -1,7 +1,7 @@
 #tfsec:ignore:aws-s3-enable-versioning
 #tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "cloud_resume_site_bucket" {
-  bucket = "tf-aws-mgrassi-cloud-resume-challenge-${var.environment}"
+  bucket = "tf-aws-mgrassi-cloud-resume-challenge-${var.environment}-site"
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "cloud_resume_site_bucket" {
@@ -28,7 +28,7 @@ resource "aws_s3_bucket_public_access_block" "cloud_resume_site_bucket" {
 #tfsec:ignore:aws-s3-enable-bucket-logging
 #tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "cloud_resume_logging_bucket" {
-  bucket = "tf-aws-mgrassi-cloud-resume-challenge-logging-${var.environment}"
+  bucket = "tf-aws-mgrassi-cloud-resume-challenge-${var.environment}-logging"
 }
 
 resource "aws_s3_bucket_versioning" "cloud_resume_logging_bucket" {
