@@ -1,5 +1,13 @@
 provider "aws" {
   region = "ap-southeast-2"
+
+  default_tags {
+    tags = {
+      Environment = "Nonprod"
+      Managed_by  = "https://github.com/mgrassi12/tf-aws-mgrassi-cloud-resume-challenge/"
+      Project = "AWS Cloud Resume Challenge"
+    }
+  }
 }
 
 terraform {
