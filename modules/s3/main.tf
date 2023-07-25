@@ -32,14 +32,14 @@ resource "aws_s3_object" "index" {
   # The filemd5() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
   # etag = "${md5(file("path/to/file"))}"
-  etag = filemd5("${var.environment}/src/index.html")
+  etag = "${md5(file("${var.environment}/src/index.html"))}"
 }
 
 resource "aws_s3_object" "error" {
   bucket = aws_s3_bucket.cloud_resume_site_bucket.id
   key    = "error.html"
   source = "${var.environment}/src/error.html"
-  etag = filemd5("${var.environment}/src/error.html")
+  etag = "${md5(file("${var.environment}/src/error.html"))}"
 }
 
 resource "aws_s3_bucket_website_configuration" "cloud_resume_site_bucket" {
