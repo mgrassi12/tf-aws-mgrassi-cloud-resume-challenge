@@ -29,9 +29,6 @@ resource "aws_s3_object" "index" {
   bucket = aws_s3_bucket.cloud_resume_site_bucket.id
   key    = "index.html"
   source = "${var.environment}/src/index.html"
-  # The filemd5() function is available in Terraform 0.11.12 and later
-  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
-  # etag = "${md5(file("path/to/file"))}"
   etag = "${md5(file("${var.environment}/src/index.html"))}"
 }
 
