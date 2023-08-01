@@ -41,19 +41,6 @@ resource "aws_s3_object" "error" {
   content_type = "text/html"
 }
 
-#can we get rid of this? "Use S3OriginConfig to specify an Amazon S3 bucket that is not configured with static website hosting."
-resource "aws_s3_bucket_website_configuration" "cloud_resume_site_bucket" {
-  bucket = aws_s3_bucket.cloud_resume_site_bucket.id
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
 resource "aws_cloudfront_origin_access_identity" "cloud_resume_site_bucket" {
   comment = "Used for the cloud_resume_site_bucket."
 }
